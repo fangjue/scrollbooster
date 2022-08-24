@@ -145,6 +145,14 @@ export default class ScrollBooster {
             to: 0,
         };
 
+        // Center content when viewport is larger than content.
+        if (this.content.width < this.viewport.width) {
+            this.edgeX.from = this.edgeX.to = (this.viewport.width - this.content.width) / 2;
+        }
+        if (this.content.height < this.viewport.height) {
+            this.edgeY.from = this.edgeY.to = (this.viewport.height - this.content.height) / 2;
+        }
+
         this.props.onUpdate(this.getState());
         this.startAnimationLoop();
     }
